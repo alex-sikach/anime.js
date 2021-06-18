@@ -1,3 +1,8 @@
+window.onload = () => {
+	console.log('use arrows up, down, left and right to move the objects');
+	console.log('use _s_ to paint the waterfall in yellow, and _w_ to paint back in blue');
+	console.log('use Ctrl+Enter to make the spin');
+}
 let  elements = document.querySelectorAll('.e1, .e2, .e3');
 let position = 'top-left';
 function right(pos) {
@@ -30,7 +35,7 @@ function left(pos) {
 	anime({
 		easing: 'easeInOutQuint',
 		targets: elements,
-		translateX: 50,
+		translateX: 0,
 		rotate: '1turn',
 		backgroundColor: 'rgb(40, 255, 123)',
 		borderRadius: ['50%', '0%']
@@ -43,7 +48,7 @@ function up(pos) {
 	anime({
 		easing: 'easeInOutQuint',
 		targets: elements,
-		translateY: 50,
+		translateY: 0,
 		rotate: '1turn',
 		width: '50px',
 		height: '50px'
@@ -54,25 +59,25 @@ function up(pos) {
 }
 addEventListener("keydown", e => {
     // console.log(e);
-    if( (e.key == 'ArrowLeft' || e.key == 'a') && (position == 'down-right' || position == 'top-right') ) {
+    if( (e.key == 'ArrowLeft'/* || e.key == 'a'*/) && (position == 'down-right' || position == 'top-right') ) {
 		if(position == 'down-right') left("down-left"); else left('top-left');
     };
 });
 addEventListener("keydown", e => {
     // console.log(e);
-    if( (e.key == 'ArrowRight' || e.key == 'd') && (position == 'top-left' || position == 'down-left') ) {
+    if( (e.key == 'ArrowRight'/* || e.key == 'd'*/) && (position == 'top-left' || position == 'down-left') ) {
 		if(position == 'top-left') right('top-right'); else right('down-right');
     };
 });
 addEventListener("keydown", e => {
     // console.log(e);
-    if( (e.key == 'ArrowUp' || e.key == 'w') && (position == 'down-left' || position == 'down-right') ) {
+    if( (e.key == 'ArrowUp'/* || e.key == 'w'*/) && (position == 'down-left' || position == 'down-right') ) {
 		if(position == 'down-left') up('top-left'); else up('top-right');
     };
 });
 addEventListener("keydown", e => {
     // console.log(e);
-    if( (e.key == 'ArrowDown' || e.key == 's') && (position == 'top-right' || position == 'top-left') ) {
+    if( (e.key == 'ArrowDown'/* || e.key == 's'*/) && (position == 'top-right' || position == 'top-left') ) {
 		if(position == 'top-right') down('down-right'); else down('down-left');
     };
 });
@@ -86,3 +91,35 @@ anime({
 	duration: 3000,
 	direction: 'alternate',
 })
+addEventListener("keydown", function(e) {
+	if(e.key == 's') {
+		anime({
+			targets: '.waterfall',
+			backgroundColor: '#ffff00',
+			duration: 1500,
+			easing: 'easeInSine'
+		})
+	} else if(e.key == 'w') {
+		anime({
+			targets: '.waterfall',
+			backgroundColor: 'rgb(45, 154, 255)',
+			duration: 1500,
+			easing: 'easeInOutCubic'
+		})
+	}
+});
+addEventListener("keydown", e => {
+	if (e.ctrlKey && e.keyCode == 13) {
+		anime({
+			targets: '.e1, .e2, .e3',
+			keyframes: [
+				{translateX: 800},
+				{translateY: 400},
+				{translateX: 0},
+				{translateY: 0}
+			],
+			duration: 2000,
+			easing: 'easeOutCubic'		
+		});
+	}
+});
