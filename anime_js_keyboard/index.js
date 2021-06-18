@@ -2,43 +2,55 @@ let  elements = document.querySelectorAll('.e1, .e2, .e3');
 let position = 'top-left';
 function right(pos) {
 	anime({
+		easing: 'easeInOutQuint',
 		targets: elements,
 		translateX: 800,
-		rotate: '1turn'
+		rotate: '1turn',
+		backgroundColor: '#fff',
+		borderRadius: ['0%', '50%']
 	});
 	// position = 'top-right';
 	position = pos;
-	console.log(position)
+	// console.log(position);
 }
 function down(pos) {
 	anime({
+		easing: 'easeInOutQuint',
 		targets: elements,
 		translateY: 400,
-		rotate: '1turn'
+		rotate: '1turn',
+		width: '70px',
+		height: '70px'
 	});
 	// position = 'down-right';
 	position = pos;
-	console.log(position)
+	// console.log(position);
 }
 function left(pos) {
 	anime({
+		easing: 'easeInOutQuint',
 		targets: elements,
 		translateX: 50,
-		rotate: '1turn'
+		rotate: '1turn',
+		backgroundColor: 'rgb(40, 255, 123)',
+		borderRadius: ['50%', '0%']
 	});
 	// position = 'down-left';
 	position = pos;
-	console.log(position)
+	// console.log(position);
 }
 function up(pos) {
 	anime({
+		easing: 'easeInOutQuint',
 		targets: elements,
 		translateY: 50,
-		rotate: '1turn'
+		rotate: '1turn',
+		width: '50px',
+		height: '50px'
 	});
 	// position = 'top-left';
 	position = pos;
-	console.log(position)
+	// console.log(position);
 }
 addEventListener("keydown", e => {
     // console.log(e);
@@ -64,3 +76,13 @@ addEventListener("keydown", e => {
 		if(position == 'top-right') down('down-right'); else down('down-left');
     };
 });
+
+anime({
+	targets: '.waterfall',
+	width: '65px', // -> from '35px' to '65px',
+	height: '650px',
+	easing: 'easeInOutQuad',
+	loop: true,
+	duration: 3000,
+	direction: 'alternate',
+})

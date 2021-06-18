@@ -1,10 +1,24 @@
-.square {
-	background: rgb(170, 28, 28);
+* {
 	position: relative;
+}
+.square {
+	background: rgb(40, 255, 123);
 	width: 50px;
 	height: 50px;
 	margin: 30px;
 }
 body {
 	background: #000;
+}
+.squares {
+	float: left;
+	width: max-content;
+	height: max-content;
+}
+.waterfall {
+	float: right;
+	width: 35px;
+	height: 25px;
+	background: rgb(45, 154, 255);
+	margin: 25px;
 }
