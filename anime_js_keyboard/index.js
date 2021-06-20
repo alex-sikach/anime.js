@@ -3,6 +3,7 @@ window.onload = () => {
 	console.log('use _s_ to paint the waterfall in yellow, and _w_ to paint back in blue');
 	console.log('use Ctrl+Enter to make the spin');
 }
+let score = document.querySelector('#score').textContent;
 let  elements = document.querySelectorAll('.e1, .e2, .e3');
 let position = 'top-left';
 function right(pos) {
@@ -51,11 +52,15 @@ function up(pos) {
 		translateY: 0,
 		rotate: '1turn',
 		width: '50px',
-		height: '50px'
+		height: '50px',
+		complete: function() {
+			if(pos == 'top-left') {
+				score++;
+				document.querySelector('#score').textContent = score;
+			}
+		}
 	});
-	// position = 'top-left';
 	position = pos;
-	// console.log(position);
 }
 addEventListener("keydown", e => {
     // console.log(e);
@@ -119,7 +124,31 @@ addEventListener("keydown", e => {
 				{translateY: 0}
 			],
 			duration: 2000,
-			easing: 'easeOutCubic'		
+			easing: 'easeOutCubic',
+			loopComplete: function() {
+				score++;
+				document.querySelector('#score').textContent = score;
+			}
 		});
 	}
+});
+
+var foot = anime({
+	targets: '.foot',
+	keyframes: [
+		{translateX: 1000},
+		{translateY: 50},
+		{translateX: 0},
+		{translateY: 0}
+	],
+	easing: 'easeOutCubic',
+	duration: 3000,
+	height: '25px',
+	borderRadius: '25px',
+	loopComplete: function() {
+		score = Number(score) + 1;
+		document.querySelector('#score').textContent = score;
+	},
+	loop: true,
+	delay: 500
 });

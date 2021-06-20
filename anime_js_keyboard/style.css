@@ -1,6 +1,15 @@
 * {
 	position: relative;
 }
+.score {
+	width: 50px;
+	height: 50px;
+	background: #ffffff;
+	margin: 20px auto;
+	text-align: center;
+	font-size: 25px;
+	font-weight: 900;
+}
 .square {
 	background: rgb(40, 255, 123);
 	width: 50px;
@@ -21,4 +30,11 @@ body {
 	height: 25px;
 	background-color: rgb(45, 154, 255);
 	margin: 25px;
+}
+.foot {
+	width: 150px;
+	height: 100px;
+	background: rgb(255, 148, 25);
+	top: 300px;
+	left: 50px;
 }
