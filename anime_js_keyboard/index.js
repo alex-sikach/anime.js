@@ -2,7 +2,13 @@ window.onload = () => {
 	console.log('use arrows up, down, left and right to move the objects');
 	console.log('use _s_ to paint the waterfall in yellow, and _w_ to paint back in blue');
 	console.log('use Ctrl+Enter to make the spin');
-}
+
+	document.querySelector('.attention').style.opacity = 1;
+};
+let attention_int = setInterval(() => {
+	document.querySelector('.attention').style.opacity-= 0.01;
+	if(document.querySelector('.attention').style.opacity == 0) clearInterval(attention_int);
+}, 50);
 let score = document.querySelector('#score').textContent;
 let  elements = document.querySelectorAll('.e1, .e2, .e3');
 let position = 'top-left';
@@ -97,28 +103,28 @@ anime({
 	direction: 'alternate',
 })
 addEventListener("keydown", function(e) {
-	if(e.key == 's') {
+	if(e.code == 'KeyS') {
 		anime({
 			targets: '.waterfall',
 			backgroundColor: '#ffff00',
 			duration: 1500,
 			easing: 'easeInSine'
-		})
-	} else if(e.key == 'w') {
+		});
+	} else if(e.code == 'KeyW') {
 		anime({
 			targets: '.waterfall',
 			backgroundColor: 'rgb(45, 154, 255)',
 			duration: 1500,
 			easing: 'easeInOutCubic'
 		})
-	}
+	};
 });
 addEventListener("keydown", e => {
 	if (e.ctrlKey && e.keyCode == 13) {
 		anime({
 			targets: '.e1, .e2, .e3',
 			keyframes: [
-				{translateX: 800},
+				{translateX: 800,},
 				{translateY: 400},
 				{translateX: 0},
 				{translateY: 0}
@@ -144,6 +150,7 @@ var foot = anime({
 	easing: 'easeOutCubic',
 	duration: 3000,
 	height: '25px',
+	backgroundColor: '#ff954e',
 	borderRadius: '25px',
 	loopComplete: function() {
 		score = Number(score) + 1;
