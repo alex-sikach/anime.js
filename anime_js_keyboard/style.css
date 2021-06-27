@@ -43,7 +43,23 @@ body {
 	height: 600px;
 }
 .wrapper-2 {
-	
+	border: 5px solid rgb(255, 93, 241);
+	width: 699px;
+	height: 350px;
+	margin: 10px auto;
+	background: #000 url("bg.png") repeat-x center;
+}
+.aboveTheGround {
+	width: 100%;
+	height: 245px;
+	background: rgb(0, 0, 0, 0, 0);
+}
+.player {
+	width: 50px;
+	height: 50px;
+	background: #000;
+	top: 195px; /*!  -fixed- */
+	left: 0px;
 }
 .attention {
 	z-index: 999;

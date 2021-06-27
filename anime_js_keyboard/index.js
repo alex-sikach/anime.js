@@ -2,13 +2,7 @@ window.onload = () => {
 	console.log('use arrows up, down, left and right to move the objects');
 	console.log('use _s_ to paint the waterfall in yellow, and _w_ to paint back in blue');
 	console.log('use Ctrl+Enter to make the spin');
-
-	document.querySelector('.attention').style.opacity = 1;
 };
-let attention_int = setInterval(() => {
-	document.querySelector('.attention').style.opacity-= 0.01;
-	if(document.querySelector('.attention').style.opacity == 0) clearInterval(attention_int);
-}, 50);
 let score = document.querySelector('#score').textContent;
 let  elements = document.querySelectorAll('.e1, .e2, .e3');
 let position = 'top-left';
@@ -139,6 +133,7 @@ addEventListener("keydown", e => {
 	}
 });
 
+
 var foot = anime({
 	targets: '.foot',
 	keyframes: [
@@ -159,3 +154,31 @@ var foot = anime({
 	loop: true,
 	delay: 500
 });
+anime({
+	targets: '.attention',
+	translateX: '-50%',
+	duration: 0
+})
+let attention = anime({
+	targets: '.attention',
+	translateY: -600,
+	duration: 5000,
+	easing: 'linear',
+	complete: function() {
+		let elem = document.querySelector('.attention');
+		elem.parentNode.removeChild(elem);
+	}
+});
+let movePlayer = anime({
+		targets: '.player',
+		easing: 'linear',
+		// duration: 500,
+		translateX: 705,
+		autoplay: false,
+		complete: function() {
+			// document.querySelector('.player').left = '0px';
+			movePlayer.play();
+		}
+	});
+document.querySelector('.wrapper-2').onmouseover = () => movePlayer.play();
+document.querySelector('.wrapper-2').onmouseout = () => movePlayer.pause();
