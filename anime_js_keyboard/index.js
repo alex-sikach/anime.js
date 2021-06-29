@@ -2,7 +2,25 @@ window.onload = () => {
 	console.log('use arrows up, down, left and right to move the objects');
 	console.log('use _s_ to paint the waterfall in yellow, and _w_ to paint back in blue');
 	console.log('use Ctrl+Enter to make the spin');
+	document.querySelector('#player').style.backgroundColor = 'rgb(0, 0, 0)';
 };
+var level = prompt("Выберите уровень: СЛОЖНЫЙ, НОРМАЛЬНЫЙ или ЛЁГКИЙ").toLowerCase();
+
+let speed;
+if(level == 'сложный') {
+	speed = 1500;
+	console.log('hard');
+} else if(level == 'нормальный') {
+	speed = 2500;
+	console.log('NORMAL');
+} else if(level == 'легкий' || level == 'лёгкий') {
+	speed = 3000;
+	console.log('easy');
+} else {
+	alert('Вы ввели слово некоректно. Мы удаляем основную игру)');
+	let wr = document.querySelector('.wrapper-2');
+	wr.parentNode.removeChild(wr);
+}
 let score = document.querySelector('#score').textContent;
 let  elements = document.querySelectorAll('.e1, .e2, .e3');
 let position = 'top-left';
@@ -157,12 +175,13 @@ var foot = anime({
 anime({
 	targets: '.attention',
 	translateX: '-50%',
+	translateY: '-50%',
 	duration: 0
 })
 let attention = anime({
 	targets: '.attention',
-	translateY: -600,
-	duration: 5000,
+	translateY: -700,
+	duration: 9500,
 	easing: 'linear',
 	complete: function() {
 		let elem = document.querySelector('.attention');
@@ -172,8 +191,8 @@ let attention = anime({
 let movePlayer = anime({
 		targets: '.player',
 		easing: 'linear',
-		// duration: 500,
-		translateX: 705,
+		duration: speed,
+		translateX: 655,
 		autoplay: false,
 		complete: function() {
 			// document.querySelector('.player').left = '0px';
@@ -182,3 +201,28 @@ let movePlayer = anime({
 	});
 document.querySelector('.wrapper-2').onmouseover = () => movePlayer.play();
 document.querySelector('.wrapper-2').onmouseout = () => movePlayer.pause();
+document.querySelector('#player').onclick = () => {
+	switch (document.querySelector('#player').style.backgroundColor) {
+		case 'rgb(0, 0, 0)':
+			score = Number(score) + 1;
+			document.querySelector('#score').textContent = score;
+			break;
+		case 'rgb(255, 0, 0)':
+			score = Number(score) - 2;
+			document.querySelector('#score').textContent = score;
+			break;
+	}
+};
+function makeRed() {
+//make the player red color
+	document.querySelector('#player').style.backgroundColor = '#ff0000';
+//it's red during random time
+	let rpPromise = new Promise((resolve, reject) => {
+		setTimeout(() => {resolve()},  Math.floor(Math.random() * 7000));
+	}).then(() => {
+	document.querySelector('#player').style.backgroundColor = '#000000';
+	}).catch(() => {
+		console.error("some error");
+	})
+};
+let rpInterval = setInterval(makeRed,  Math.floor(Math.random() * 15000));

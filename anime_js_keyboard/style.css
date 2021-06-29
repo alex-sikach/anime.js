@@ -2,13 +2,17 @@
 	position: relative;
 }
 .score {
+	position: fixed;
 	width: 50px;
 	height: 50px;
+	top: 20px;
 	background: #ffffff;
-	margin: 20px auto;
+	left: 50%;
+	transform: translateX(-50%);
 	text-align: center;
 	font-size: 25px;
 	font-weight: 900;
+	z-index: 998;
 }
 .square {
 	background: rgb(40, 255, 123);
@@ -60,6 +64,7 @@ body {
 	background: #000;
 	top: 195px; /*!  -fixed- */
 	left: 0px;
+	z-index: 90;
 }
 .attention {
 	z-index: 999;
