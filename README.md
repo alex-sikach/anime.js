@@ -8,7 +8,7 @@ and sure you had to notice the white square with some number. it is a main, comm
 good luck)
 
 
-you can give me a feedback in:
+you can give me a feedback/code review in:
 telegram: https://t.me/jastnaim
 vk: https://vk.com/goodmoningng
 viber: +37377591731
