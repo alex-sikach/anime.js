@@ -15,7 +15,7 @@ if(level == 'сложный') {
 } else if(level == 'нормальный') {
 	speed = 2500;
 	console.log('NORMAL');
-} else if(level == 'легкий' || level == 'лёгкий' || level == 'qwe') {
+} else if(level == 'легкий' || level == 'лёгкий' || level == 'qwe' || level == 'wqe') {
 	speed = 3000;
 	console.log('easy');
 } else {
