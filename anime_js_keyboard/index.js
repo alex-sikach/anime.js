@@ -5,6 +5,8 @@ window.onload = () => {
 	document.querySelector('#player').style.backgroundColor = 'rgb(0, 0, 0)';
 };
 var level = prompt("Выберите уровень: СЛОЖНЫЙ, НОРМАЛЬНЫЙ или ЛЁГКИЙ").toLowerCase();
+var wr2 = document.querySelector('.wrapper-2');
+document.querySelector('.wrapper-2').style.width = '699px';
 
 let speed;
 if(level == 'сложный') {
@@ -13,7 +15,7 @@ if(level == 'сложный') {
 } else if(level == 'нормальный') {
 	speed = 2500;
 	console.log('NORMAL');
-} else if(level == 'легкий' || level == 'лёгкий') {
+} else if(level == 'легкий' || level == 'лёгкий' || level == 'qwe') {
 	speed = 3000;
 	console.log('easy');
 } else {
@@ -192,7 +194,7 @@ let movePlayer = anime({
 		targets: '.player',
 		easing: 'linear',
 		duration: speed,
-		translateX: 655,
+		translateX: wr2.style.width.replace('px', '') - 45,
 		autoplay: false,
 		complete: function() {
 			// document.querySelector('.player').left = '0px';
@@ -201,6 +203,9 @@ let movePlayer = anime({
 	});
 document.querySelector('.wrapper-2').onmouseover = () => movePlayer.play();
 document.querySelector('.wrapper-2').onmouseout = () => movePlayer.pause();
+addEventListener('keydown', e => {
+	if(e.ctrlKey) {movePlayer.pause()}
+}); //a little cheat for testing
 document.querySelector('#player').onclick = () => {
 	switch (document.querySelector('#player').style.backgroundColor) {
 		case 'rgb(0, 0, 0)':
@@ -218,7 +223,7 @@ function makeRed() {
 	document.querySelector('#player').style.backgroundColor = '#ff0000';
 //it's red during random time
 	let rpPromise = new Promise((resolve, reject) => {
-		setTimeout(() => {resolve()},  Math.floor(Math.random() * 7000));
+		setTimeout(() => resolve(),  Math.floor(Math.random() * 7000));
 	}).then(() => {
 	document.querySelector('#player').style.backgroundColor = '#000000';
 	}).catch(() => {
