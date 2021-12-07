@@ -82,30 +82,7 @@ function up(pos) {
 	});
 	position = pos;
 }
-addEventListener("keydown", e => {
-    // console.log(e);
-    if( (e.key == 'ArrowLeft'/* || e.key == 'a'*/) && (position == 'down-right' || position == 'top-right') ) {
-		if(position == 'down-right') left("down-left"); else left('top-left');
-    };
-});
-addEventListener("keydown", e => {
-    // console.log(e);
-    if( (e.key == 'ArrowRight'/* || e.key == 'd'*/) && (position == 'top-left' || position == 'down-left') ) {
-		if(position == 'top-left') right('top-right'); else right('down-right');
-    };
-});
-addEventListener("keydown", e => {
-    // console.log(e);
-    if( (e.key == 'ArrowUp'/* || e.key == 'w'*/) && (position == 'down-left' || position == 'down-right') ) {
-		if(position == 'down-left') up('top-left'); else up('top-right');
-    };
-});
-addEventListener("keydown", e => {
-    // console.log(e);
-    if( (e.key == 'ArrowDown'/* || e.key == 's'*/) && (position == 'top-right' || position == 'top-left') ) {
-		if(position == 'top-right') down('down-right'); else down('down-left');
-    };
-});
+ 
 
 anime({
 	targets: '.waterfall',
